@@ -12,14 +12,8 @@ export const App = () => {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post 
-            author="Fernando Zuchi" 
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit veritatis nisi odit est laborum quae ducimus voluptatem eaque enim aperiam illo id cumque expedita provident sapiente inventore nihil, tempora quod!"
-          />
-          <Post 
-            author="Zézin" 
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit veritatis nisi odit est laborum quae ducimus voluptatem eaque enim aperiam illo id cumque expedita provident sapiente inventore nihil, tempora quod!"
-          />
+          <Post />
+          <Post />
         </main>
       </div>
     </>
