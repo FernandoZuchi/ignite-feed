@@ -16,14 +16,15 @@ export function Post({ author, publishedAt, content }) {
 
     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true })
 
-    function handleCreateNewComment(event) {
+    function handleCreateNewComment() {
         event.preventDefault();
 
         setComments([...comments, newCommentText]);
         setNewCommentText('');
     }
 
-    function handleNewCommentChange(event) {
+    function handleNewCommentChange() {
+        event.target.setCustomValidity('');
         setNewCommentText(event.target.value);
     }
 
@@ -34,7 +35,13 @@ export function Post({ author, publishedAt, content }) {
 
         setComments(commentsWithoutDeletedOne);
     }
-    
+
+    function handleNewCommentInvalid() {
+        event.target.setCustomValidity("Esse campo é obrigatório! ");
+    }
+
+    const isNewCommentEmpty = newCommentText === 0;
+
     return (
         <article className={styles.post}>
             <header>
@@ -68,8 +75,12 @@ export function Post({ author, publishedAt, content }) {
                     placeholder='Deixe um comentário'
                     value={newCommentText}
                     onChange={handleNewCommentChange}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
-                <button type='submit'>Comentar</button>
+
+                <button type='submit' disabled={isNewCommentEmpty}>Comentar</button>
+
             </form>
 
             <div className={styles.commentList}>
